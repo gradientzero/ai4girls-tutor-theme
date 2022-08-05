@@ -8,8 +8,8 @@ jobs:
   deploy:    
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
       - name: Deploy source-code
+        uses: actions/checkout@v2
         env:
           HOST: ${{ secrets.SSH_HOST }}
           USERNAME: ${{ secrets.SSH_USERNAME }}
