@@ -1,4 +1,6 @@
-Indigo, a custom theme for Open edX
+[![Deploy Source Code](https://github.com/gradientzero/ai4girls-tutor-theme/actions/workflows/sync.yml/badge.svg)](https://github.com/gradientzero/ai4girls-tutor-theme/actions/workflows/sync.yml)
+
+Indigo, a cool blue theme for Open edX
 ======================================
 
 Indigo is an elegant, customizable theme for `Open edX <https://open.edx.org>`__.
