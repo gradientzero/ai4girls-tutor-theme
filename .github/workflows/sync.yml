@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Deploy source-code
-        uses: actions/checkout@v2
+        uses: appleboy/ssh-action@master
         env:
           HOST: ${{ secrets.SSH_HOST }}
           USERNAME: ${{ secrets.SSH_USERNAME }}
@@ -18,6 +18,7 @@ jobs:
         with:
           source: "*"
           target: "/root"
+          script: whoami
 
   # sync:
   #   runs-on: ubuntu-latest
