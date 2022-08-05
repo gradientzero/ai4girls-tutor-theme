@@ -1,17 +1,31 @@
-name: Sync with private repo
+name: Deploy Source Code
 
 on:
   push:
     branches: [ master ]
 
 jobs:
-  sync:
+  deploy:    
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Deploy source-code
+        env:
+          HOST: ${{ secrets.SSH_HOST }}
+          USERNAME: ${{ secrets.SSH_USERNAME }}
+          PORT: 22
+          KEY: ${{ secrets.SSH_KEY }}
         with:
-          fetch-depth: 0
-      - name: Add remote
-        run: git remote add overhangio https://${{ secrets.GIT_USERNAME }}:${{ secrets.GIT_PASSWORD }}@git.overhang.io/core/indigo.git
-      - name: Push
-        run: git push overhangio master
+          source: "*"
+          target: "/root"
+
+  # sync:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #       with:
+  #         fetch-depth: 0
+  #     - name: Add remote
+  #       run: git remote add overhangio https://${{ secrets.GIT_USERNAME }}:${{ secrets.GIT_PASSWORD }}@git.overhang.io/core/indigo.git
+  #     - name: Push
+  #       run: git push overhangio master
