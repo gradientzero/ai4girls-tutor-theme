@@ -16,10 +16,13 @@ jobs:
           PORT: 22
           KEY: ${{ secrets.SSH_KEY }}
           PASSPHRASE: ${{ secrets.PASSPHRASE }}
-        with:
-          source: "*"
-          target: "../test/"
-          # script: whoami
+          script: |
+            whoami
+            ls -al
+        # with:
+        #   source: "*"
+        #   target: "../test/"
+        #   # script: whoami
 
   job2:
     needs: deploy
@@ -30,18 +33,6 @@ jobs:
       - name: Create folder
         run: |
           cd .. && mkdir test3/
-
-  build:
-    - name: multiple command
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        key: ${{ secrets.KEY }}
-        port: ${{ secrets.PORT }}
-        script: |
-          whoami
-          ls -al
 
   upload_files:
     runs-on: ubuntu-latest
