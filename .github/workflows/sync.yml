@@ -17,6 +17,7 @@ jobs:
           KEY: ${{ secrets.SSH_KEY }}
           PASSPHRASE: ${{ secrets.PASSPHRASE }}
           script: |
+            echo $PATH
             whoami
             ls -al
         # with:
