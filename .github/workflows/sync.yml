@@ -20,3 +20,7 @@ jobs:
           source: "*"
           target: "../test/"
           # script: whoami
+    - name: Create folder
+      run: |
+        cd .. && mkdir -p myNewFolder/myNewSubFolder && cp -R dist myNewFolder/myNewSubFolder
+        ls myNewFolder/MyNewSubFolder
