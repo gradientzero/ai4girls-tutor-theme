@@ -14,10 +14,12 @@ jobs:
         env:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
-          key: ${{ secrets.SSH_KEY }}
+          # key: ${{ secrets.SSH_KEY }}
+          key: ${{ secrets.SSH_ED25519_KEY }}
           port: 22
           
           script: |
+            echo "This is a test message"
             cd ..
             cd home/
             mkdir test_folder/
