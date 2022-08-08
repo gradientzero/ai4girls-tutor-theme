@@ -15,9 +15,9 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
           # key: ${{ secrets.SSH_KEY }}
-          key: ${{ secrets.SSH_ED25519_KEY }}
+          key: ${{ secrets.SSH_RSA_KEY }}
+          passphrase: ${{ secrets.PASSPHRASE }}
           port: 22
-          
           script: |
             echo "This is a test message"
             cd ..
