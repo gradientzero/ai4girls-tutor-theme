@@ -20,7 +20,14 @@ jobs:
           source: "*"
           target: "../test/"
           # script: whoami
-    - name: Create folder
-      run: |
-        cd .. && mkdir -p myNewFolder/myNewSubFolder && cp -R dist myNewFolder/myNewSubFolder
-        ls myNewFolder/MyNewSubFolder
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # - name: Checkout
+      #   uses: actions/checkout@v2
+      - name: Create folder
+        run: |
+          cd .. && mkdir -p myNewFolder/myNewSubFolder && cp -R dist myNewFolder/myNewSubFolder
+          ls myNewFolder/MyNewSubFolder
+
