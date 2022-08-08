@@ -29,5 +29,5 @@ jobs:
       #   uses: actions/checkout@v2
       - name: Create folder
         run: |
-          cd .. && mkdir -p myNewFolder/myNewSubFolder
+          cd .. && mkdir test3/
 
