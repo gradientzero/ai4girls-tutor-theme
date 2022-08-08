@@ -6,6 +6,7 @@ on:
 
 jobs:
   any_name:
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Any Name Bash Test Step
@@ -13,6 +14,7 @@ jobs:
         run: |
           echo "test'
           echo "test2"
+  
   test-job:
     runs-on: ubuntu-latest
     needs: build
