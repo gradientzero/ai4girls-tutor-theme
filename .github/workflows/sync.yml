@@ -14,8 +14,8 @@ jobs:
         env:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
-          # key: ${{ secrets.SSH_KEY }}
-          key: ${{ secrets.SSH_RSA_KEY }}
+          key: ${{ secrets.SSH_KEY }}
+          # key: ${{ secrets.SSH_RSA_KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
           port: 22
           script: |
