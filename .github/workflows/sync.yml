@@ -38,7 +38,7 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: "./"
-          target: "../home/tutor-themes/test"
+          target: "../home/tutor-themes/ai4girls-custom-theme"
 
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Deploy test
@@ -50,148 +50,10 @@ jobs:
           port: 22
           script: |
             echo "I am here, thanks"
-            cd ../home/tutor-themes/test
+            cd ../home/tutor-themes/ai4girls-custom-theme
             pip install -e . 
             tutor plugins enable indigo
             tutor config save
             tutor images build openedx
             tutor local start -d
             tutor local settheme indigo
-
-          # source: "*"
-          # target: ./test
-          # target: ../home/tutor-themes/ai4girls-tutor-theme/
-          # script: |
-          #   cd ..
-          #   cd /home/tutor-themes/ai4girls-tutor-theme
-          #   git pull
-      # - name: Deploy source-code 
-      #   uses: appleboy/scp-action@master
-      #   env:
-      #     HOST: ${{ secrets.SSH_HOST }}
-      #     USERNAME: ${{ secrets.SSH_USERNAME }}
-      #     PORT: ${{ secrets.SSH_PORT}}
-      #     KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-      #     source: "*"
-      #     target: ./test/
-      #     script: |
-      #       echo $PATH
-      #       whoami
-      #       ls -al
-
-# name: Deploy Source Code
-
-# on:
-#   push:
-#     branches: [ develop ]
-
-# jobs:
-#   job_one:
-#     name: Deploy
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: running ssh commands on server
-#         uses: appleboy/scp-action@master
-#         env:
-#           host: ${{ secrets.SSH_HOST }}
-#           username: ${{ secrets.SSH_USERNAME }}
-#           key: ${{ secrets.TEST_KEY }}
-#           # key: ${{ secrets.SSH_KEY }}
-#           # key: ${{ secrets.SSH_RSA_KEY }}
-          
-#           passphrase: ${{ secrets.PASSPHRASE }}
-#           port: 22
-#           script: |
-#             echo "This is a test message"
-#             cd ..
-#             cd home/
-#             mkdir test_folder/
-#           # source: "*"
-#           # target: ./test/
-
-
-
-
-
-
-
-
-
-  # any_name:
-  #   needs: build
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Any Name Bash Test Step
-  #       shell: bash
-  #       run: |
-  #         echo "test'
-  #         echo "test2"
-  
-  # test-job:
-  #   runs-on: ubuntu-latest
-  #   # needs: build
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - run: mkdir ~/testfiles
-  #     - uses: actions/download-artifact@v2
-  #       with:
-  #         name: testfiles
-  #         path: ~/testfiles
-
-  #     - name: Deploy dive preview
-  #       uses: appleboy/scp-action@v0.0.10
-  #       with:
-  #         host: ${{ secrets.SSH_HOST }}
-  #         username: ${{ secrets.SSH_USERNAME }}
-  #         key: ${{ secrets.SSH_KEY }}
-  #         # rm: true
-  #         source: "*"
-  #         target: ./test/
-  # deploy:    
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Deploy source-code
-  #       uses: appleboy/scp-action@master
-  #       env:
-  #         HOST: ${{ secrets.SSH_HOST }}
-  #         USERNAME: ${{ secrets.SSH_USERNAME }}
-  #         PORT: 22
-  #         KEY: ${{ secrets.SSH_KEY }}
-  #         PASSPHRASE: ${{ secrets.PASSPHRASE }}
-  #         source: "*"
-  #         target: ./test/
-          # script: |
-          #   echo $PATH
-          #   whoami
-          #   ls -al
-        # with:
-        #   source: "*"
-        #   target: "../test/"
-        #   # script: whoami
-
-  # job2:
-  #   needs: deploy
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     # - name: Checkout
-  #     #   uses: actions/checkout@v2
-  #     - name: Create folder
-  #       run: |
-  #         cd .. && mkdir test3/
-
-  # upload_files:
-  #   runs-on: ubuntu-latest
-  #   name: Upload a builded file.
-  #   steps:
-  #   - name: Checkout
-  #     uses: actions/checkout@v2.3.4
-  #   - name: Upload Files
-  #     id: upload
-  #     uses: Creepios/sftp-action@v1.0.3
-  #     with:
-  #       host: ${{ secrets.SSH_HOST }}
-  #       port: 22
-  #       username: ${{ secrets.SSH_USERNAME }}
-  #       # password: 'password'
-  #       localPath: './'
-  #       remotePath: '../test3/'
