@@ -1,4 +1,4 @@
-[![execute remote ssh to pull updates from master](https://github.com/gradientzero/ai4girls-tutor-theme/actions/workflows/sync.yml/badge.svg?branch=master)](https://github.com/gradientzero/ai4girls-tutor-theme/actions/workflows/sync.yml)
+![execute remote ssh to pull updates from master](https://github.com/gradientzero/ai4girls-tutor-theme/actions/workflows/sync.yml/badge.svg?branch=master)](https://github.com/gradientzero/ai4girls-tutor-theme/actions/workflows/sync.yml)
 
 Indigo, a cool blue theme for Open edX
 ======================================
