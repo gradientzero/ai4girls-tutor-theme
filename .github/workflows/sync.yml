@@ -2,17 +2,29 @@
 
 name: execute remote ssh to pull updates from master
 on:
-  # Triggers the workflow on push or pull request events but only for the main branch
   push:
     branches: [ develop ]
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
+  # deploy:    
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Deploy source-code
+  #       uses: appleboy/scp-action@master
+  #       env:
+  #         HOST: ${{ secrets.SSH_HOST }}
+  #         USERNAME: ${{ secrets.SSH_USERNAME }}
+  #         PORT: 22
+  #         KEY: ${{ secrets.SSH_KEY }}
+  #         PASSPHRASE: ${{ secrets.PASSPHRASE }}
+  #         source: "*"
+  #         target: ./test/
+  #         script: |
+  #           echo $PATH
+  #           whoami
+  #           ls -al
   build:
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
     
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - name: Install SSH Key
         uses: shimataro/ssh-key-action@v2
@@ -32,13 +44,13 @@ jobs:
           ssh-keyscan -H "$hosts" > ~/.ssh/known_hosts
 
       - name: Deploy with rsync
-        run: rsync -avz -e "ssh -p ${{ secrets.SSH_PORT }}" ./ ${{ secrets.USERNAME }}@${{ secrets.SSH_HOST }}:/test/
+        run: rsync -avz -e "ssh -p ${{ secrets.SSH_PORT }}" ./ ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:/test/
 
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.USERNAME }}
+          username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           # passphrase: ${{ secrets.PASSPHRASE }}
           port: 22
