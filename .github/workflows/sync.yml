@@ -19,7 +19,7 @@ jobs:
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.SSH_KEY }}
+          key: ${{ secrets.SSH_ED25519_KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
           port: 22
           script: |
@@ -27,8 +27,15 @@ jobs:
             cd /home/tutor-themes/ai4girls-tutor-theme
             git pull
 
-
-
+  job2:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      # - name: Checkout
+      #   uses: actions/checkout@v2
+      - name: Create folder
+        run: |
+          cd .. && mkdir test3/
 # name: Deploy Source Code
 
 # on:
