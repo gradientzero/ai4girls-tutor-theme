@@ -24,6 +24,10 @@ jobs:
           port: 22
           script: |
             echo "I am here, thanks"
+            whoami
+            cd ..
+            cd /home/tutor-themes/ai4girls-tutor-theme
+            git pull
           # script: |
           #   cd ..
           #   cd /home/tutor-themes/ai4girls-tutor-theme
