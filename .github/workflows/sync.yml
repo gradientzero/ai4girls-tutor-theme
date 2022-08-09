@@ -23,9 +23,11 @@ jobs:
           # passphrase: ${{ secrets.PASSPHRASE }}
           port: 22
           script: |
-            cd ..
-            cd /home/tutor-themes/ai4girls-tutor-theme
-            git pull
+            echo "I am here, thanks"
+          # script: |
+          #   cd ..
+          #   cd /home/tutor-themes/ai4girls-tutor-theme
+          #   git pull
 
 # name: Deploy Source Code
 
