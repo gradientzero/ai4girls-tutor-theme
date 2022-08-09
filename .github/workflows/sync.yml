@@ -3,25 +3,8 @@
 name: execute remote ssh to pull updates from master
 on:
   push:
-    branches: [ develop ]
+    branches: [ master ]
 jobs:
-  # deploy:    
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Deploy source-code
-  #       uses: appleboy/scp-action@master
-  #       env:
-  #         HOST: ${{ secrets.SSH_HOST }}
-  #         USERNAME: ${{ secrets.SSH_USERNAME }}
-  #         PORT: 22
-  #         KEY: ${{ secrets.SSH_KEY }}
-  #         PASSPHRASE: ${{ secrets.PASSPHRASE }}
-  #         source: "*"
-  #         target: ./test/
-  #         script: |
-  #           echo $PATH
-  #           whoami
-  #           ls -al
   build:
     runs-on: ubuntu-latest
     
@@ -71,6 +54,9 @@ jobs:
             pip install -e . 
             tutor plugins enable indigo
             tutor config save
+            tutor images build openedx
+            tutor local start -d
+            tutor local settheme indigo
 
           # source: "*"
           # target: ./test
