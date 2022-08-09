@@ -27,15 +27,6 @@ jobs:
             cd /home/tutor-themes/ai4girls-tutor-theme
             git pull
 
-  job2:
-    needs: deploy
-    runs-on: ubuntu-latest
-    steps:
-      # - name: Checkout
-      #   uses: actions/checkout@v2
-      - name: Create folder
-        run: |
-          cd .. && mkdir test3/
 # name: Deploy Source Code
 
 # on:
