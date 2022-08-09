@@ -1,32 +1,62 @@
-name: Deploy Source Code
+# SSH into machine and git pull for updates
 
+name: execute remote ssh to pull updates from master
 on:
+  # Triggers the workflow on push or pull request events but only for the main branch
   push:
     branches: [ develop ]
-
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  job_one:
-    name: Deploy
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
     runs-on: ubuntu-latest
+    
+    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - name: running ssh commands on server
-        uses: appleboy/scp-action@master
-        env:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: appleboy/ssh-action@master
+        with:
           host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USERNAME }}
-          key: ${{ secrets.TEST_KEY }}
-          # key: ${{ secrets.SSH_KEY }}
-          # key: ${{ secrets.SSH_RSA_KEY }}
-          
-          passphrase: ${{ secrets.PASSPHRASE }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
           port: 22
           script: |
-            echo "This is a test message"
             cd ..
-            cd home/
-            mkdir test_folder/
-          # source: "*"
-          # target: ./test/
+            cd /home/tutor-themes/ai4girls-tutor-theme
+            git pull
+
+
+
+# name: Deploy Source Code
+
+# on:
+#   push:
+#     branches: [ develop ]
+
+# jobs:
+#   job_one:
+#     name: Deploy
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: running ssh commands on server
+#         uses: appleboy/scp-action@master
+#         env:
+#           host: ${{ secrets.SSH_HOST }}
+#           username: ${{ secrets.SSH_USERNAME }}
+#           key: ${{ secrets.TEST_KEY }}
+#           # key: ${{ secrets.SSH_KEY }}
+#           # key: ${{ secrets.SSH_RSA_KEY }}
+          
+#           passphrase: ${{ secrets.PASSPHRASE }}
+#           port: 22
+#           script: |
+#             echo "This is a test message"
+#             cd ..
+#             cd home/
+#             mkdir test_folder/
+#           # source: "*"
+#           # target: ./test/
 
 
 
