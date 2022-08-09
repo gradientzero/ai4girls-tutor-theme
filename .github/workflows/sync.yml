@@ -55,11 +55,11 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           # passphrase: ${{ secrets.PASSPHRASE }}
           port: 22
-          script: |
-            echo "I am here, thanks"
-            cd ../home/tutor-themes/ai4girls-tutor-theme
+          # script: |
+          #   echo "I am here, thanks"
+          #   cd ../home/tutor-themes/ai4girls-tutor-theme
           source: "*"
-          target: ../home/test/
+          target: ./test/
           # target: ../home/tutor-themes/ai4girls-tutor-theme/
           # script: |
           #   cd ..
