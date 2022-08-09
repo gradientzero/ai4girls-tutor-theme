@@ -41,7 +41,7 @@ jobs:
           target: "../home/tutor-themes/ai4girls-custom-theme"
 
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - name: Deploy test
+      - name: Install theme and rebuild Tutor-Image
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.SSH_HOST }}
