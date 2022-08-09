@@ -74,6 +74,7 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           # password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.SSH_PORT }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: "./"
           target: "./test"
       # - name: Deploy source-code 
