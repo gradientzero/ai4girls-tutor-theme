@@ -19,8 +19,9 @@ jobs:
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.SSH_KEY_RSA }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
+          known_hosts: 'just-a-placeholder-so-we-dont-get-errors'
           port: 22
           script: |
             cd ..
