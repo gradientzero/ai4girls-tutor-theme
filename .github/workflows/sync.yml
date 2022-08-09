@@ -58,8 +58,8 @@ jobs:
           # script: |
           #   echo "I am here, thanks"
           #   cd ../home/tutor-themes/ai4girls-tutor-theme
-          source: "*"
-          target: ./test/
+          # source: "*"
+          # target: ./test
           # target: ../home/tutor-themes/ai4girls-tutor-theme/
           # script: |
           #   cd ..
@@ -76,7 +76,7 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: "./"
-          target: "./test"
+          target: "../home/tutor-themes/test"
       # - name: Deploy source-code 
       #   uses: appleboy/scp-action@master
       #   env:
