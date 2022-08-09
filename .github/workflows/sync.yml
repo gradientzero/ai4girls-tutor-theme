@@ -58,7 +58,7 @@ jobs:
           script: |
             echo "I am here, thanks"
             cd ../home/tutor-themes/ai4girls-tutor-theme
-            ls
+            git pull origin master
           # script: |
           #   cd ..
           #   cd /home/tutor-themes/ai4girls-tutor-theme
