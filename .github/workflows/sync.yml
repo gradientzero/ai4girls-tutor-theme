@@ -23,6 +23,14 @@ jobs:
       - name: Adding Known Hosts
         run: ssh-keyscan -p ${{ secrets.SSH_PORT}} -H ${{ secrets.SSH_HOST }}  >> ~/.ssh/known_hosts
 
+      - name: Write SSH keys
+        run: |
+          install -m 600 -D /dev/null ~/.ssh/id_rsa
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          host='ai4girls.gradient0.com'
+          hosts="$(dig +short "$host" | grep -v '\.$' | sed -z 's|\n|,|g')$host"
+          ssh-keyscan -H "$hosts" > ~/.ssh/known_hosts
+
       - name: Deploy with rsync
         run: rsync -avz -e "ssh -p ${{ secrets.SSH_PORT }}" ./ ${{ secrets.USERNAME }}@${{ secrets.SSH_HOST }}:/test/
 
